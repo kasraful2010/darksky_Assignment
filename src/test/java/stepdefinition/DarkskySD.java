@@ -7,6 +7,7 @@ import cucumber.api.java.en.When;
 import framework.AppiumWrapper;
 import framework.page_object_model_web.DarkskyPage;
 
+import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 
 public class DarkskySD {
@@ -33,8 +34,12 @@ public class DarkskySD {
     }
 
     @Then("^I verify current temperature is between low and high value$")
-    public void verifyTemp() { ds.verifyTempRange();
+    public void verifyTemp() throws ParseException { ds.verifyTempRange();
 
     }
+
+    //darksky-sprint
+    @Then("^I verify timeline is displayed with two hours incremented$")
+    public void verifyTimeline(){ ds.verifyTimelineIsDisplayed(); }
 
 }

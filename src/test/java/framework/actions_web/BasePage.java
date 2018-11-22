@@ -2,8 +2,14 @@ package framework.actions_web;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import java.lang.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 
 import stepdefinition.SharedSD;
@@ -54,6 +60,19 @@ public class BasePage {
 
 		return text;
 	}
+
+	public String getHour(int range) {
+		SimpleDateFormat sdf = new SimpleDateFormat("ha");
+		Date day = new Date();
+		String currentHour = sdf.format(day);
+		return currentHour;
+	}
+
+	public void testArray(By locator) {
+		List<WebElement> timeList = (List<WebElement>) SharedSD.getDriver().findElement(locator);
+
+	}
+
 
 	public void clickOnBrowserBackArrow() {
 		SharedSD.getDriver().navigate().back();
