@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import stepdefinition.SharedSD;
 
+import javax.print.DocFlavor;
 import java.lang.reflect.Array;
 import java.text.ParseException;
 
@@ -16,6 +17,13 @@ public class DarkskyPage extends BasePage {
 	private By lowTemp = By.xpath("//span[@class='currently']//span[2]//span[2]//span[2]");
 	private By highTemp = By.xpath("//span[@class='summary-high-low']//span[3]");
 	private By timeline = By.xpath("//div[@id='timeline']//div[@class='hours']//span[3]");
+	private By expandOnTimeLine = By.xpath("//span[contains(text(),'Today')]");
+	private By minTemp1 = By.cssSelector("#week > a.day.revealed > span.tempRange > span.minTemp");
+	private By minTemp2 = By.xpath("//div[@class='dayDetails revealed']//span[@class='highTemp swip']");
+	private By maxTemp1 = By.cssSelector("#week > a:nth-child(2) > span.tempRange > span.maxTemp");
+	private By maxTemp2 = By.xpath("//div[@class='dayDetails revealed']//span[@class='lowTemp swap']");
+
+
 
 	public void clearTextField (){ clear(textField);}
 	public void sendText(String text){sendText(textField, text);}
@@ -49,6 +57,30 @@ public class DarkskyPage extends BasePage {
 		}
 
 	}
+
+	public void expandTimeLine ()throws InterruptedException{
+		clickOn(expandOnTimeLine);}
+
+	public void verifyLowAndHighTemp(){
+		int min1 = getMin1();
+		int min2 = getMin2();
+		int max1 = getMax1();
+		int max2 = getMax2();
+		Assert.assertTrue(min1 ==min2);
+		Assert.assertTrue(max1 ==max2);
+	}
+
+
+	public int getMin1(){return subStringToInt(minTemp1,0,2);}
+	public int getMin2(){return subStringToInt(minTemp2,0,2);}
+	public int getMax1(){return subStringToInt(maxTemp1,0,2);}
+	public int getMax2(){return subStringToInt(maxTemp2,0,2);}
+
+
+
+
+
+
 
 
 }

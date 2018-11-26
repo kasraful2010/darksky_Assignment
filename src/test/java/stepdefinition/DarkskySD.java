@@ -38,8 +38,17 @@ public class DarkskySD {
 
     }
 
-    //darksky-sprint
+    //darksky-sprint-task-1
     @Then("^I verify timeline is displayed with two hours incremented$")
     public void verifyTimeline(){ ds.verifyTimelineIsDisplayed(); }
+
+    // darksky-sprint-task-2
+
+    @When("^I expand today's timeline$")
+    public void timeline() throws InterruptedException {ds.expandTimeLine(); }
+
+    @Then("^I verify lowest and highest temp is displayed correctly$")
+    public void verifyTempDisplayed(){ds.verifyLowAndHighTemp();}
+
 
 }
