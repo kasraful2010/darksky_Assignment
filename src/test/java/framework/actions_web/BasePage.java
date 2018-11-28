@@ -69,7 +69,6 @@ public class BasePage {
 
 	}
 
-
 	public void clickOnBrowserBackArrow() {
 		SharedSD.getDriver().navigate().back();
 	}

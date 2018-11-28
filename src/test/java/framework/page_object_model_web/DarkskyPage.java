@@ -23,7 +23,7 @@ public class DarkskyPage extends BasePage {
 	private By maxTemp1 = By.cssSelector("#week > a:nth-child(2) > span.tempRange > span.maxTemp");
 	private By maxTemp2 = By.xpath("//div[@class='dayDetails revealed']//span[@class='lowTemp swap']");
 	private By timeMachine = By.xpath("//a[@class='button']");
-	private By todaysDate = By.xpath("//td[@class='is-today']");
+	private By presentDate = By.xpath("//td[@class='is-today']");
 
 	public void clearTextField (){ clear(textField);}
 	public void sendText(String text){sendText(textField, text);}
@@ -72,7 +72,15 @@ public class DarkskyPage extends BasePage {
 
 	public void clickOnTimeMachine()throws InterruptedException{ clickOn(timeMachine);}
 
-	public int getTodaysDate(){return subStringToInt(todaysDate,0,31);}
+	public void verifyTodaysDate(){
+		String calendarDate = getText(presentDate);
+
+		if (calendarDate.equals(presentDate)) {
+		}
+	}
+
+
+	}
 
 
 
@@ -82,5 +90,6 @@ public class DarkskyPage extends BasePage {
 
 
 
-}
+
+
 
