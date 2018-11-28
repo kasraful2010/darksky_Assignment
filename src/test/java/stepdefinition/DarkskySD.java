@@ -50,5 +50,10 @@ public class DarkskySD {
     @Then("^I verify lowest and highest temp is displayed correctly$")
     public void verifyTempDisplayed(){ds.verifyLowAndHighTemp();}
 
+    @When("^I click on Time Machine$")
+    public void timeMachine ()throws InterruptedException{ds.clickOnTimeMachine();}
+
+    @Then("^I verify date is selected to todays date$")
+    public void DateSelected(){ds.getCurrentTemp();}
 
 }

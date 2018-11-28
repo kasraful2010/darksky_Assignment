@@ -22,8 +22,8 @@ public class DarkskyPage extends BasePage {
 	private By minTemp2 = By.xpath("//div[@class='dayDetails revealed']//span[@class='highTemp swip']");
 	private By maxTemp1 = By.cssSelector("#week > a:nth-child(2) > span.tempRange > span.maxTemp");
 	private By maxTemp2 = By.xpath("//div[@class='dayDetails revealed']//span[@class='lowTemp swap']");
-
-
+	private By timeMachine = By.xpath("//a[@class='button']");
+	private By todaysDate = By.xpath("//td[@class='is-today']");
 
 	public void clearTextField (){ clear(textField);}
 	public void sendText(String text){sendText(textField, text);}
@@ -41,25 +41,21 @@ public class DarkskyPage extends BasePage {
 		Assert.assertTrue(low <= current && current <= high,
 				"Current temp (" + current + "˚) is not in between low (" + low + "˚) and high (" + high + "˚)"
 		);
-
 	}
 
 	public void verifyTimelineIsDisplayed (){
-		int count = 0;
-		int range = 0;
-		int match = 0;
+		int count = 0, range = 0, match = 0;
 
-		for (int i = 3; i < 25; i+=2) {
-			String name = SharedSD.getDriver().findElement(By.xpath("//div[@id='timeline']//div[@class='hours']//span[3]")).getText();
-
+		for (int i = 3; i <= 24; i+=2) {
+			String name = SharedSD.getDriver().findElement
+					(By.xpath("//div[@id='timeline']//div[@class='hours']//span["+ i +"]")).getText();
 			if (getHour(range).contains(name));
 			match +=1;
 		}
 
 	}
 
-	public void expandTimeLine ()throws InterruptedException{
-		clickOn(expandOnTimeLine);}
+	public void expandTimeLine ()throws InterruptedException{ clickOn(expandOnTimeLine);}
 
 	public void verifyLowAndHighTemp(){
 		int min1 = getMin1();
@@ -69,12 +65,15 @@ public class DarkskyPage extends BasePage {
 		Assert.assertTrue(min1 ==min2);
 		Assert.assertTrue(max1 ==max2);
 	}
-
-
 	public int getMin1(){return subStringToInt(minTemp1,0,2);}
 	public int getMin2(){return subStringToInt(minTemp2,0,2);}
 	public int getMax1(){return subStringToInt(maxTemp1,0,2);}
 	public int getMax2(){return subStringToInt(maxTemp2,0,2);}
+
+	public void clickOnTimeMachine()throws InterruptedException{ clickOn(timeMachine);}
+
+	public int getTodaysDate(){return subStringToInt(todaysDate,0,31);}
+
 
 
 

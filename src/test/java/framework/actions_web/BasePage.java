@@ -10,13 +10,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-
 import stepdefinition.SharedSD;
 
-/**
- * Created by mohammadmuntakim on 6/9/17.
- */
+
 public class BasePage {
 
 	public void clickOn(By locator) throws InterruptedException {
@@ -62,8 +58,8 @@ public class BasePage {
 	}
 
 	public String getHour(int range) {
-		SimpleDateFormat sdf = new SimpleDateFormat("ha");
-		Date day = new Date();
+		Date day = new Date(); //Getting current date
+		SimpleDateFormat sdf = new SimpleDateFormat("ha"); //Formating day variable into a particular pattern
 		String currentHour = sdf.format(day);
 		return currentHour;
 	}
