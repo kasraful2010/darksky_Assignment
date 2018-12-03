@@ -7,6 +7,7 @@ import cucumber.api.java.en.When;
 import framework.AppiumWrapper;
 import framework.page_object_model_web.DarkskyPage;
 
+import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 
 public class DarkskySD {
@@ -33,8 +34,28 @@ public class DarkskySD {
     }
 
     @Then("^I verify current temperature is between low and high value$")
-    public void verifyTemp() { ds.verifyTempRange();
+    public void verifyTemp() throws ParseException { ds.verifyTempRange();
 
     }
+
+    //darksky-sprint-task-1
+    @Then("^I verify timeline is displayed with two hours incremented$")
+    public void verifyTimeline(){ ds.verifyTimelineIsDisplayed(); }
+
+    // darksky-sprint-task-2
+
+    @When("^I expand today's timeline$")
+    public void timeline() throws InterruptedException {ds.expandTimeLine(); }
+
+    @Then("^I verify lowest and highest temp is displayed correctly$")
+    public void verifyTempDisplayed(){ds.verifyLowAndHighTemp();}
+
+    // darksky-sprint-task-3
+
+    @When("^I click on Time Machine$")
+    public void timeMachine ()throws InterruptedException{ds.clickOnTimeMachine();}
+
+    @Then("^I verify date is selected to todays date$")
+    public void DateSelected(){ds.verifyTodaysDate();}
 
 }

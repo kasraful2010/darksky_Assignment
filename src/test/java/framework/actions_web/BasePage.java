@@ -2,15 +2,17 @@ package framework.actions_web;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import java.lang.*;
-
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import stepdefinition.SharedSD;
 
-/**
- * Created by mohammadmuntakim on 6/9/17.
- */
+
 public class BasePage {
 
 	public void clickOn(By locator) throws InterruptedException {
@@ -53,6 +55,18 @@ public class BasePage {
 		}
 
 		return text;
+	}
+
+	public String getHour(int range) {
+		Date day = new Date(); //Getting current date
+		SimpleDateFormat sdf = new SimpleDateFormat("ha"); //Formating day variable into a particular pattern
+		String currentHour = sdf.format(day);
+		return currentHour;
+	}
+
+	public void testArray(By locator) {
+		List<WebElement> timeList = (List<WebElement>) SharedSD.getDriver().findElement(locator);
+
 	}
 
 	public void clickOnBrowserBackArrow() {

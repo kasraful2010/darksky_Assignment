@@ -17,13 +17,16 @@ Feature: Darksky Search Feature
     And I click on search magnifying glass
     Then I verify current temperature is between low and high value
 
-  @darksky-sprint
+  @darksky-sprint-task-1
   Scenario: Verify timeline is displayed in correct format
-    Given I am on Darksky home page
     Then I verify timeline is displayed with two hours incremented
 
-  @darsky-sprint-task-2
+  @darksky-sprint-task-2
   Scenario: Verify individual day temp timeline
-    Given I am on Darksky Home Page
-    When I expand todays timeline
+    When I expand today's timeline
     Then I verify lowest and highest temp is displayed correctly
+
+  @darksky-sprint-task-3
+  Scenario: Verify Time Machine Calendar
+    When I click on Time Machine
+    Then I verify date is selected to todays date
